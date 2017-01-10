@@ -1,0 +1,6 @@
+---
+- name: install mysql
+  apt: name=mysql-server state=present
+
+- name: install apache
+  apt: name=apache2 state=present

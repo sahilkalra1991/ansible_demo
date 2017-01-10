@@ -1,0 +1,6 @@
+---
+- hosts: test
+  remote_user: sk # Logged in User
+  become: true    # Change User , default root by sudo
+  roles:
+    - basic
