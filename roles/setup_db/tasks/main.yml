@@ -1,0 +1,26 @@
+---
+- name: install mysql
+  apt: name=mysql-server state=present
+
+- name: Add configuration
+  template:
+    src: my.cnf.j2
+    dest: "/etc/mysql/my.cnf"
+    owner: root
+    group: root
+    mode: 0644
+    force: "true"
+    notify: restart mysql
+
+- name: Create database
+  mysql_db:
+    name: test
+    state: present
+    
+- name: add user
+  mysql_user: 
+    name: ninja
+    host: localhost
+    password: 12345
+    priv: "*.*:test"
+    state: present
