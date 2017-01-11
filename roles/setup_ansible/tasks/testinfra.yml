@@ -1,0 +1,9 @@
+---
+- name: Install pip
+  include_role: 
+    name: setup_pip
+
+- name: Install testinfra
+  pip:
+    name: testinfra
+    version: 1.5.1

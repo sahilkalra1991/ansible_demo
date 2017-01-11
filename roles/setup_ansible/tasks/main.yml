@@ -1,0 +1,3 @@
+---
+- include: tasks/ansible.yml
+- include: tasks/testinfra.yml

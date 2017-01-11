@@ -5,3 +5,9 @@
   roles:
     - setup_db
     - setup_apache
+    
+- hosts: ansible
+  remote_user: sk
+  become: true
+  roles:
+    - setup_ansible

@@ -1,4 +1,8 @@
 ---
+- name: install pip
+  include_role: 
+    name: setup_pip
+
 - name: Install basic packages
   include: tasks/basic.yml
   
