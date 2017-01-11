@@ -24,4 +24,12 @@
   mysql_db:
     name: test
     state: present
+ 
+- name: add user
+  mysql_user: 
+    name: ninja
+    host: localhost
+    password: 12345
+    priv: "test.*:ALL"
+    state: present
     
