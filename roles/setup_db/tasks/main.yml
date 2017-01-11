@@ -1,47 +1,6 @@
 ---
-- name: install mysql
-  apt: name=mysql-server state=present
+- name: Install basic packages
+  include: tasks/basic.yml
   
-- name: install libmysqlclient-dev
-  apt: name=libmysqlclient-dev state=present
-
-- name: install python-dev
-  apt: name=python-dev state=present
-
-- name: install gcc
-  apt: name=gcc state=present
-  
-- name : check pip installation
-  stat: path=/usr/local/bin/pip
-  register: pip_result
-  
-- name: download pip
-  get_url:
-    url: https://bootstrap.pypa.io/get-pip.py
-    dest: .
-  when: pip_result.stat.exists == False
-    
-- name: install pip
-  command: /usr/bin/python get-pip.py
-  when: pip_result.stat.exists == False
-  
-- name: intall python mysql connector
-  pip: 
-    name=MySQL-python
-    version=1.2.5
-
-- name: Add configuration
-  template:
-    src: my.cnf.j2
-    dest: "/etc/mysql/my.cnf"
-    owner: root
-    group: root
-    mode: 0644
-    force: "true"
-  notify: restart mysql
-
-- name: Create database
-  mysql_db:
-    name: test
-    state: present
-    
+- name: Install mysql packages
+  include: tasks/mysql.yml

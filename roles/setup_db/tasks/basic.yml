@@ -1,0 +1,19 @@
+- name: install python-dev
+  apt: name=python-dev state=present
+
+- name: install gcc
+  apt: name=gcc state=present
+  
+- name : check pip installation
+  stat: path=/usr/local/bin/pip
+  register: pip_result
+  
+- name: download pip
+  get_url:
+    url: https://bootstrap.pypa.io/get-pip.py
+    dest: .
+  when: pip_result.stat.exists == False
+    
+- name: install pip
+  command: /usr/bin/python get-pip.py
+  when: pip_result.stat.exists == False
