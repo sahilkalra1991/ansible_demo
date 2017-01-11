@@ -1,6 +1,28 @@
 ---
 - name: install mysql
   apt: name=mysql-server state=present
+  
+- name: install libmysqlclient-dev
+  apt: name=libmysqlclient-dev state=present
+
+- name: install python-dev
+  apt: name=python-dev state=present
+
+- name: install gcc
+  apt: name=gcc state=present
+  
+- name: download pip
+  get_url:
+    url: https://bootstrap.pypa.io/get-pip.py
+    dest: .
+    
+- name: install pip
+  command: /usr/bin/python get-pip.py
+  
+- name: intall python mysql connector
+  pip: 
+    name=MySQL-python
+    version=1.2.5
 
 - name: Add configuration
   template:
@@ -10,7 +32,7 @@
     group: root
     mode: 0644
     force: "true"
-    notify: restart mysql
+  notify: restart mysql
 
 - name: Create database
   mysql_db:
@@ -22,5 +44,5 @@
     name: ninja
     host: localhost
     password: 12345
-    priv: "*.*:test"
+    priv: "test.*:ALL"
     state: present
