@@ -1,0 +1,3 @@
+[submodule "roles/install_nextcloud"]
+	path = roles/install_nextcloud
+	url = git@github.com:sahilkalra1991/install_nextcloud.git
