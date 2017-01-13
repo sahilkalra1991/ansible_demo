@@ -1,6 +1,9 @@
+---
 - name: install python-dev
   apt: name=python-dev state=present
 
 - name: install gcc
   apt: name=gcc state=present
-  
+
+- name: install unzip
+  apt: name=unzip state=present
