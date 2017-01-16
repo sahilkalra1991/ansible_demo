@@ -20,6 +20,7 @@ nextcloud_webroot: "/opt/nextcloud"
 nextcloud_data_dir: "/var/ncdata"
 nextcloud_admin_name: "admin"
 nextcloud_admin_pwd: "an$!b!3"
+nextcloud_php_ver: "7.0"
 
 # [DATABASE]
 nextcloud_db_backend: "mariadb"
