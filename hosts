@@ -1,5 +1,8 @@
-[webserver]
+[nextcloud]
 192.168.56.103
+
+[check_mk]
+192.168.56.104
 
 [ansible]
 192.168.56.101

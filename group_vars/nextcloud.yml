@@ -1,0 +1,50 @@
+---
+# defaults file for nextcloud
+# [CONFIG]
+nextcloud_channel: "releases"
+# nextcloud_channel: releases | prereleases | daily | latest
+nextcloud_version: 11.0.0
+# nextcloud_version for releases, prereleases and daily channel
+nextcloud_branch: "stable"
+# specified branch for daily & latest channel
+nextcloud_repository: "https://download.nextcloud.com/server"
+# Domain URL where to download Nextcloud.
+# Path will be calculated following channel, version and branch.
+
+nextcloud_trusted_domain: ["{{ ansible_default_ipv4.address }}"]
+nextcloud_instance_name: "{{ nextcloud_trusted_domain | first }}"
+
+nextcloud_websrv: "apache2"
+nextcloud_install_websrv: true
+nextcloud_webroot: "/opt/nextcloud"
+nextcloud_data_dir: "/var/ncdata"
+nextcloud_admin_name: "admin"
+nextcloud_admin_pwd: "an$!b!3"
+
+# [DATABASE]
+nextcloud_db_backend: "mariadb"
+nextcloud_install_db: true
+nextcloud_db_host: "127.0.0.1"
+nextcloud_db_name: "nextcloud"
+nextcloud_db_admin: "ncadmin"
+nextcloud_db_pwd: "an$!b!3"
+
+# [TLS]
+nextcloud_install_tls: false
+nextcloud_tls_enforce: true
+nextcloud_force_strong_apache_ssl: true
+nextcloud_tls_cert_method: "self-signed"
+nextcloud_tls_dhparam: "/etc/ssl/dhparam.pem"
+nextcloud_hsts: false
+# nextcloud_tls_cert_method: "self-signed" | "signed" | "installed"
+# nextcloud_tls_cert: /path/to/cert
+# nextcloud_tls_cert_key: /path/to/cert/key
+# nextcloud_tls_cert_chain: /path/to/cert/chain
+# nextcloud_tls_src_cert: /path/to/cert
+# nextcloud_tls_src_cert_key: /path/to/cert/key
+
+
+# [SYSTEM]
+websrv_user: "www-data"
+websrv_group: "www-data"
+mysql_root_pwd: "an$!b!3"
