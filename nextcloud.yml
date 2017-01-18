@@ -1,0 +1,6 @@
+---
+- hosts: nextcloud
+  remote_user: deb
+  become: true
+  roles:
+    - install_nextcloud
